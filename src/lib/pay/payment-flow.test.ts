@@ -7,6 +7,11 @@ describe("PAY_SESSION", () => {
     const sum = PAY_SESSION.policies.reduce((acc, p) => acc + p.amount, 0);
     expect(Math.round(sum * 100) / 100).toBe(PAY_SESSION.amount);
   });
+
+  it("ผลรวม breakdown = ยอดชำระ", () => {
+    const sum = PAY_SESSION.breakdown.reduce((acc, b) => acc + b.amount, 0);
+    expect(Math.round(sum * 100) / 100).toBe(PAY_SESSION.amount);
+  });
 });
 
 describe("canProceedToPayment", () => {
