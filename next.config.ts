@@ -1,0 +1,34 @@
+import type { NextConfig } from "next";
+
+// dev: ตั้ง ADMIN_API_ORIGIN=http://localhost:5100 ให้ proxy /admin/* + /producer/* ไป BFF เดียวกัน
+// (producer-google-sso.md §18.4 — producer endpoints อยู่ API host เดียวกับ admin) — บังคับ same-origin.
+// prod: เว้นว่าง — reverse proxy เสิร์ฟ SPA + API เป็น origin เดียวกันอยู่แล้ว ไม่ต้อง rewrite.
+const adminApiOrigin = process.env.ADMIN_API_ORIGIN;
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pub-c5e31b5cdafb419fb247a8ac2e78df7a.r2.dev",
+      },
+      {
+        protocol: "https",
+        hostname: "api.dicebear.com",
+      },
+      {
+        protocol: "https",
+        hostname: "api-prod-minimal-v700.pages.dev",
+      },
+    ],
+  },
+  async rewrites() {
+    if (!adminApiOrigin) return [];
+    return [
+      { source: "/admin/:path*", destination: `${adminApiOrigin}/admin/:path*` },
+      { source: "/producer/:path*", destination: `${adminApiOrigin}/producer/:path*` },
+    ];
+  },
+};
+
+export default nextConfig;
