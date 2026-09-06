@@ -46,11 +46,11 @@ export function SummaryScreen() {
         title="ข้อมูลธุรกรรม"
         icon={<FileText className="size-4" />}
       >
-        <div className="space-y-3">
-          <PayInfoRow label="เลขที่รายการ" value={session.invoiceNo} />
-          <PayInfoRow label="ประเภทบริการ" value={session.serviceType} />
-          <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} />
-          <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} />
+        <div className="divide-y divide-dashed divide-[var(--divider)]">
+          <PayInfoRow label="เลขที่รายการ" value={session.invoiceNo} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="ประเภทบริการ" value={session.serviceType} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} className="py-3 first:pt-0 last:pb-0" />
         </div>
       </PaySectionCard>
 
@@ -58,10 +58,10 @@ export function SummaryScreen() {
         title="ข้อมูลลูกค้า"
         icon={<User className="size-4" />}
       >
-        <div className="space-y-3">
-          <PayInfoRow label="ชื่อ - สกุล" value={session.payer.name} />
-          <PayInfoRow label="โทรศัพท์" value={session.payer.phone} />
-          <PayInfoRow label="อีเมล" value={session.payer.email} />
+        <div className="divide-y divide-dashed divide-[var(--divider)]">
+          <PayInfoRow label="ชื่อ - นามสกุล" value={session.payer.name} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="โทรศัพท์" value={session.payer.phone} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="อีเมล" value={session.payer.email} className="py-3 first:pt-0 last:pb-0" />
         </div>
       </PaySectionCard>
 

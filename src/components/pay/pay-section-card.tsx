@@ -36,12 +36,13 @@ export function PaySectionCard({
 interface PayInfoRowProps {
   label: string;
   value: ReactNode;
+  className?: string;
 }
 
 /** แถว label ซ้าย / value ขวา ในการ์ดสรุป. */
-export function PayInfoRow({ label, value }: PayInfoRowProps) {
+export function PayInfoRow({ label, value, className }: PayInfoRowProps) {
   return (
-    <div className="flex justify-between gap-4 text-sm">
+    <div className={cn("flex justify-between gap-4 text-sm", className)}>
       <span className="text-grey-600">{label}</span>
       <span className="text-right font-medium text-grey-800">{value}</span>
     </div>
