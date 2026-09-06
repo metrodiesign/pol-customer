@@ -380,6 +380,11 @@
   100% { opacity: 0; }
 }
 
+@keyframes vbar {
+  0%   { transform: translateX(-105%); }
+  100% { transform: translateX(320%); }
+}
+
 @keyframes splash-logo-pulse {
   0%                { transform: scale(1);   opacity: 1; }
   16.67%            { transform: scale(0.9); opacity: 0.48; }

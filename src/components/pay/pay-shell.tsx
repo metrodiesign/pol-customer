@@ -7,7 +7,9 @@ import { PayTopNav } from "./pay-top-nav";
 
 /** ลิงก์ของแต่ละหน้าใน flow — เปิดตรง ๆ ได้ทุกหน้า. */
 const PAY_LINKS = [
+  { href: "/pay/opening", label: "0.กำลังเปิด" },
   { href: "/pay", label: "1B.สรุป+ชำระ" },
+  { href: "/pay/redirecting", label: "6.เชื่อมต่อ PSP" },
   { href: "/pay/processing", label: "4.Processing" },
   { href: "/pay/success", label: "5.สำเร็จ" },
   { href: "/pay/failed", label: "6.ไม่สำเร็จ" },

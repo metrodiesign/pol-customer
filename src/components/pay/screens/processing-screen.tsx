@@ -1,27 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Check, Info, RefreshCw, Search } from "lucide-react";
+import { Info, Lock, RefreshCw, Search } from "lucide-react";
 import { CHANNEL_DISPLAY } from "@/lib/payment-channel";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
-import { cn } from "@/lib/utils";
 
-/** ขั้นตอนที่แสดงใน timeline ระหว่างตรวจสอบผล — ขั้นสุดท้ายคือกำลังดำเนินการ. */
-const VERIFY_STEPS = [
-  { title: "สร้างรายการ", sub: "Payment created" },
-  { title: "ไปยังผู้ให้บริการ", sub: "Redirected" },
-  { title: "ดำเนินการชำระเงิน", sub: "Provider processing" },
-  { title: "ยืนยันผล", sub: "Backend verification · กำลังดำเนินการ" },
-] as const;
-
-/** 4 — จอตรวจสอบผลการชำระเงิน: เดิน timeline ทีละขั้นแล้วพาไปหน้าผลลัพธ์. */
+/** 4 — จอตรวจสอบผลการชำระเงิน: ค้างที่ขั้นยืนยันผล, รอผู้ใช้กด recheck. */
 export function ProcessingScreen() {
   const router = useRouter();
   const session = PAY_SESSION;
-  // ค้างที่ขั้นสุดท้าย (ยืนยันผล) — ไม่เดินหน้าเอง, รอผู้ใช้กด recheck.
-  const index = VERIFY_STEPS.length - 1;
-  const remaining = 1;
 
   return (
     <div className="pt-8 pb-4">
@@ -73,71 +61,19 @@ export function ProcessingScreen() {
         </div>
       </div>
 
-      {/* ความคืบหน้า */}
-      <div className="mb-3 rounded-card border border-[var(--divider)] bg-bg-paper p-4 shadow-card">
-        <p className="mb-3 text-sm font-bold text-grey-800">ความคืบหน้า</p>
-        {VERIFY_STEPS.map((step, i) => {
-          const done = i < index;
-          const active = i === index;
-          const last = i === VERIFY_STEPS.length - 1;
-          return (
-            <div key={step.title} className="flex gap-3">
-              <div className="flex flex-none flex-col items-center">
-                <span
-                  className={cn(
-                    "flex size-[22px] items-center justify-center rounded-full",
-                    done && "bg-primary text-white",
-                    active && "border-[2.5px] border-primary bg-bg-paper",
-                    !done && !active && "border-2 border-grey-300 bg-bg-paper",
-                  )}
-                >
-                  {done ? (
-                    <Check className="size-3" strokeWidth={3} />
-                  ) : active ? (
-                    <span className="size-2 animate-pulse rounded-full bg-primary" />
-                  ) : null}
-                </span>
-                {!last && (
-                  <span
-                    className={cn(
-                      "min-h-5 w-0.5 flex-1",
-                      done ? "bg-primary" : "bg-grey-300",
-                    )}
-                  />
-                )}
-              </div>
-              <div className={cn(!last && "pb-3.5")}>
-                <p
-                  className={cn(
-                    "text-sm",
-                    active ? "font-bold text-primary" : "font-semibold text-grey-800",
-                  )}
-                >
-                  {step.title}
-                </p>
-                <p
-                  className={cn(
-                    "text-[10.5px]",
-                    active ? "text-primary" : "text-grey-400",
-                  )}
-                >
-                  {step.sub}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+      {/* progress bar (indeterminate) */}
+      <div
+        role="progressbar"
+        aria-label="กำลังตรวจสอบผลการชำระเงิน"
+        className="mx-auto my-5 h-1.5 w-[170px] overflow-hidden rounded-full bg-grey-300"
+      >
+        <div className="h-full w-[34%] rounded-full bg-primary [animation:vbar_1.6s_ease-in-out_infinite]" />
+      </div>
 
-        <div className="mt-3 flex items-center justify-center gap-2 text-grey-600">
-          <span className="block size-3.5 animate-spin rounded-full border-2 border-grey-300 border-t-primary" />
-          <span className="text-xs">
-            ตรวจสอบอัตโนมัติอีกครั้งใน{" "}
-            <span className="font-semibold tabular-nums text-grey-800">
-              {remaining}
-            </span>{" "}
-            วินาที
-          </span>
-        </div>
+      {/* TLS badge */}
+      <div className="mb-5 flex items-center justify-center gap-1.5 text-success-dark">
+        <Lock className="size-3.5" />
+        <span className="text-xs font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
       </div>
 
       <button
