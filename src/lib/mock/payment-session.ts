@@ -12,7 +12,7 @@ export const PAY_SESSION: PaySession = {
   ref1: "REF1-2026-04821",
   ref2: "REF2-2026-09153",
   dueAt: "25 มี.ค. 2026 23:59",
-  amount: 13428.5,
+  amount: 14073.71,
   policies: [
     {
       docNo: "VMI-2026-004821",
@@ -40,6 +40,7 @@ export const PAY_SESSION: PaySession = {
     { label: "เบี้ยประกันภัยสุทธิ", amount: 12500 },
     { label: "อากรแสตมป์", amount: 50 },
     { label: "ภาษีมูลค่าเพิ่ม (VAT 7%)", amount: 878.5 },
+    { label: "เบี้ยประกันภัย พ.ร.บ.", amount: 645.21 },
   ],
   receipt: {
     receiptNo: "RCP-20260218-001",
