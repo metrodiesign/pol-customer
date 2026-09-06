@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pol-customer:${IMAGE_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "${PORT:-5400}:5400"
+    # env_file: .env   # uncomment if prod ever needs real runtime vars beyond .env.example
+    # No proxy/backend service here on purpose — prod reverse proxy + API live outside this repo
+    # (see next.config.ts comment on ADMIN_API_ORIGIN).

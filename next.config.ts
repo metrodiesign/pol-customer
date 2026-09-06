@@ -6,6 +6,8 @@ import type { NextConfig } from "next";
 const adminApiOrigin = process.env.ADMIN_API_ORIGIN;
 
 const nextConfig: NextConfig = {
+  // Docker: self-contained .next/standalone server (node server.js) — smaller image, no node_modules copy.
+  output: "standalone",
   images: {
     remotePatterns: [
       {
