@@ -374,6 +374,12 @@
 }
 
 /* ---- Loading animations ---- */
+@keyframes vring {
+  0%   { transform: scale(0.9); opacity: 0.5; }
+  70%  { transform: scale(1.45); opacity: 0; }
+  100% { opacity: 0; }
+}
+
 @keyframes splash-logo-pulse {
   0%                { transform: scale(1);   opacity: 1; }
   16.67%            { transform: scale(0.9); opacity: 0.48; }
