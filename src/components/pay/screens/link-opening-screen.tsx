@@ -22,23 +22,23 @@ export function LinkOpeningScreen() {
       <h1 className="mb-2 text-xl font-bold tracking-tight text-grey-900">
         กำลังเปิดรายการชำระเงิน
       </h1>
-      <p className="mb-5 max-w-[290px] text-sm leading-relaxed text-grey-600">
+      <p className="mb-5 max-w-[290px] text-base leading-relaxed text-grey-600">
         ระบบกำลังตรวจสอบลิงก์และความปลอดภัยของรายการ
       </p>
 
       {/* สรุปยอด */}
       <div className="w-full rounded-card border border-[var(--divider)] bg-bg-paper p-4 shadow-card">
         <div className="flex items-baseline gap-3">
-          <span className="flex-1 text-left text-sm text-grey-600">ยอดชำระ</span>
+          <span className="flex-1 text-left text-base text-grey-600">ยอดชำระ</span>
           <span className="text-lg font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
           </span>
         </div>
         <div className="mt-2 flex items-baseline gap-3 border-t border-[var(--divider)] pt-2.5">
-          <span className="flex-1 text-left text-sm text-grey-600">
+          <span className="flex-1 text-left text-base text-grey-600">
             เลขที่รายการ
           </span>
-          <span className="text-sm font-semibold text-grey-800">
+          <span className="text-base font-semibold text-grey-800">
             {session.invoiceNo}
           </span>
         </div>
@@ -56,7 +56,7 @@ export function LinkOpeningScreen() {
       {/* TLS badge */}
       <div className="flex items-center gap-1.5 text-success-dark">
         <Lock className="size-3.5" />
-        <span className="text-xs font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
+        <span className="text-base font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
       </div>
     </div>
   );

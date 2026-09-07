@@ -22,23 +22,23 @@ export function ReceiptScreen() {
             <ShieldCheck className="size-6 text-white" />
           </span>
           <h3 className="font-bold text-grey-800">Central Payment Gateway</h3>
-          <p className="mt-1 text-xs text-grey-500">ใบเสร็จรับเงินอิเล็กทรอนิกส์</p>
-          <p className="text-xs text-grey-500">E-Receipt</p>
+          <p className="mt-1 text-base text-grey-500">ใบเสร็จรับเงินอิเล็กทรอนิกส์</p>
+          <p className="text-base text-grey-500">E-Receipt</p>
         </header>
 
         <div className="px-6 py-5">
           <div className="mb-5 text-center">
-            <p className="text-sm text-grey-600">ยอดชำระ</p>
+            <p className="text-base text-grey-600">ยอดชำระ</p>
             <p className="mt-1 text-3xl font-bold text-grey-900">
               {formatTHB(amount, 2)}
             </p>
-            <Badge className="mt-2 h-7 gap-1.5 rounded-full bg-success-lighter px-3 text-sm font-semibold text-success-dark [&>svg]:size-4!">
+            <Badge className="mt-2 h-7 gap-1.5 rounded-full bg-success-lighter px-3 text-base font-semibold text-success-dark [&>svg]:size-4!">
               <CheckCircle2 />
               ชำระสำเร็จ
             </Badge>
           </div>
 
-          <dl className="space-y-2.5 text-sm">
+          <dl className="space-y-2.5 text-base">
             <ReceiptRow label="เลขที่ใบเสร็จ" value={session.receipt.receiptNo} mono />
             <ReceiptRow
               label="Transaction ID"
@@ -58,7 +58,7 @@ export function ReceiptScreen() {
           <hr className="my-4 border-dashed border-[var(--divider)]" />
 
           <p className="mb-2 font-semibold text-grey-700">ร้านค้า</p>
-          <dl className="space-y-2 text-sm">
+          <dl className="space-y-2 text-base">
             <ReceiptRow label="ชื่อ" value={session.merchantName} />
             <ReceiptRow label="Merchant ID" value={session.merchantId} mono />
             <ReceiptRow
@@ -73,12 +73,12 @@ export function ReceiptScreen() {
           <p className="mb-2 font-semibold text-grey-700">
             รายการกรมธรรม์ ({session.policies.length})
           </p>
-          <ul className="divide-y divide-dashed divide-[var(--divider)] text-sm">
+          <ul className="divide-y divide-dashed divide-[var(--divider)] text-base">
             {session.policies.map((policy) => (
               <li key={policy.docNo} className="flex gap-3 py-2 first:pt-0 last:pb-0">
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold text-primary">{policy.insuredName}</p>
-                  <p className="text-xs text-grey-500">{policy.docType}</p>
+                  <p className="text-base text-grey-500">{policy.docType}</p>
                   <p className="mt-1 text-grey-800">{policy.coverage}</p>
                 </div>
                 <div className="shrink-0 text-right">
@@ -94,7 +94,7 @@ export function ReceiptScreen() {
           <hr className="my-4 border-dashed border-[var(--divider)]" />
 
           <p className="mb-2 font-semibold text-grey-700">รายการ</p>
-          <dl className="space-y-2 text-sm">
+          <dl className="space-y-2 text-base">
             {session.breakdown.map((line) => (
               <ReceiptRow
                 key={line.label}
@@ -108,14 +108,14 @@ export function ReceiptScreen() {
               <dd className="text-lg">{formatTHB(session.amount, 2)}</dd>
             </div>
           </dl>
-          <p className="mt-1 text-xs text-grey-500">(รวม VAT และ พ.ร.บ. แล้ว)</p>
+          <p className="mt-1 text-base text-grey-500">(รวม VAT และ พ.ร.บ. แล้ว)</p>
         </div>
 
         <footer className="border-t border-dashed border-[var(--divider)] bg-grey-100 px-6 py-4 text-center">
-          <p className="mb-1 text-xs text-grey-500">
+          <p className="mb-1 text-base text-grey-500">
             Reference: {session.invoiceNo}
           </p>
-          <p className="text-xs text-grey-500">
+          <p className="text-base text-grey-500">
             เอกสารฉบับนี้ออกโดยระบบอิเล็กทรอนิกส์ · ไม่ต้องลงลายมือชื่อ
           </p>
         </footer>
@@ -155,7 +155,7 @@ function ReceiptRow({
   return (
     <div className="flex justify-between gap-4 border-b border-grey-200 py-1.5 last:border-0">
       <dt className="text-grey-600">{label}</dt>
-      <dd className={mono ? "text-right font-mono text-xs" : "text-right"}>
+      <dd className={mono ? "text-right font-mono text-base" : "text-right"}>
         {value}
       </dd>
     </div>

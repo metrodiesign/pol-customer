@@ -17,14 +17,14 @@ export function PayChannelCard({ channel }: { channel: PaymentChannel }) {
             className="size-20 shrink-0 object-contain"
           />
           <span className="flex min-w-0 flex-1 flex-col gap-1">
-            <span className="text-sm font-bold text-grey-800">{display.label}</span>
-            <span className="text-xs leading-relaxed text-grey-500">
+            <span className="text-base font-bold text-grey-800">{display.label}</span>
+            <span className="text-base leading-relaxed text-grey-500">
               {display.caption}
             </span>
           </span>
         </div>
       </div>
-      <p className="mt-2 px-1 text-xs text-grey-500">
+      <p className="mt-2 px-1 text-base text-grey-500">
         ช่องทางนี้ถูกกำหนดมากับลิงก์ชำระเงินแล้ว
       </p>
     </div>

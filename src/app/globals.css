@@ -91,45 +91,49 @@
   --shadow-error: 0 8px 16px 0 rgba(255, 86, 48, 0.24);
 
   /* ---- Typography ---- */
-  /* Thai font appended after the Latin face so Latin glyphs use Public Sans and
-     Thai glyphs use Noto Sans Thai (Latin face has no Thai coverage). */
-  --font-sans: var(--font-public-sans), var(--font-noto-thai), ui-sans-serif,
-    system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-    sans-serif;
+  /* DB Sathorn X covers Thai and Latin in one face, so no Thai fallback is
+     appended — body and display share the same family. */
+  --font-sans: var(--font-db-sathorn-x), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  /* ---- Typography (Public Sans body, Barlow display — extracted from minimals) ---- */
-  --font-display: "Barlow", var(--font-public-sans), var(--font-noto-thai),
-    ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-db-sathorn-x), ui-sans-serif, system-ui, sans-serif;
+  /* Legacy alias: dashboard widgets set font-family: var(--font-barlow, ...)
+     inline. Barlow is gone, so the alias keeps those call sites on the one face
+     without touching each file. */
+  --font-barlow: var(--font-db-sathorn-x);
   /* ---- Control-plane signature: monospace data face for machine identifiers
      (masked keys, idempotency keys, event/client IDs, signatures, refs). ---- */
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular,
     "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-  /* ---- Body/display scale: floor 14px, body 16px (rebalanced up) ---- */
-  --text-xs: 0.875rem;            /* 14px ← floor */
-  --text-xs--line-height: 1.25rem;
-  --text-sm: 0.9375rem;           /* 15px ← body (text-sm) */
-  --text-sm--line-height: 1.375rem;
-  --text-base: 1rem;              /* 16px ← normal */
-  --text-base--line-height: 1.5rem;
-  --text-lg: 1.25rem;             /* 20px */
-  --text-lg--line-height: 1.75rem;
-  --text-xl: 1.5rem;              /* 24px */
-  --text-xl--line-height: 2rem;
-  --text-2xl: 1.75rem;            /* 28px */
-  --text-2xl--line-height: 2.25rem;
-  --text-3xl: 2rem;               /* 32px */
-  --text-3xl--line-height: 2.5rem;
-  --text-4xl: 2.5rem;             /* 40px */
-  --text-4xl--line-height: 2.75rem;
-  --text-5xl: 3rem;               /* 48px */
-  --text-5xl--line-height: 3rem;
+  /* ---- Body/display scale: floor 16px, base 20px ----
+     The whole ladder sits one rung above the old Latin scale — DB Sathorn X has
+     a smaller x-height, and Thai stacks vowels above and below the baseline, so
+     every step also carries more leading. ---- */
+  --text-xs: 1rem;                /* 16px ← floor */
+  --text-xs--line-height: 1.625rem;
+  --text-sm: 1.125rem;            /* 18px ← body (text-sm) */
+  --text-sm--line-height: 1.75rem;
+  --text-base: 1.25rem;           /* 20px ← normal */
+  --text-base--line-height: 2rem;
+  --text-lg: 1.5rem;              /* 24px */
+  --text-lg--line-height: 2.25rem;
+  --text-xl: 1.75rem;             /* 28px */
+  --text-xl--line-height: 2.5rem;
+  --text-2xl: 2rem;               /* 32px */
+  --text-2xl--line-height: 2.75rem;
+  --text-3xl: 2.25rem;            /* 36px */
+  --text-3xl--line-height: 3rem;
+  --text-4xl: 2.75rem;            /* 44px */
+  --text-4xl--line-height: 3.375rem;
+  --text-5xl: 3.25rem;            /* 52px */
+  --text-5xl--line-height: 3.875rem;
   /* clamp ranges = base rem (mobile) -> computed px @1440 (desktop), matching MUI responsiveFontSizes */
-  --text-h1: clamp(2.5rem, 1.972rem + 2.253vw, 4rem);
-  --text-h2: clamp(2rem, 1.648rem + 1.502vw, 3rem);
-  --text-h3: clamp(1.75rem, 1.662rem + 0.376vw, 2rem);     /* 28→32px */
-  --text-h4: clamp(1.5rem, 1.412rem + 0.376vw, 1.75rem);   /* 24→28px */
-  --text-h5: clamp(1.375rem, 1.331rem + 0.188vw, 1.5rem);  /* 22→24px */
-  --text-h6: clamp(1.25rem, 1.206rem + 0.188vw, 1.375rem); /* 20→22px */
+  --text-h1: clamp(2.75rem, 2.25rem + 2.5vw, 4.5rem);      /* 44→72px */
+  --text-h2: clamp(2.25rem, 1.893rem + 1.786vw, 3.5rem);   /* 36→56px */
+  --text-h3: clamp(2.125rem, 2.054rem + 0.357vw, 2.375rem); /* 34→38px */
+  --text-h4: clamp(1.875rem, 1.804rem + 0.357vw, 2.125rem); /* 30→34px */
+  --text-h5: clamp(1.75rem, 1.714rem + 0.179vw, 1.875rem); /* 28→30px */
+  --text-h6: clamp(1.625rem, 1.589rem + 0.179vw, 1.75rem); /* 26→28px */
 }
 
 @theme {
@@ -352,11 +356,7 @@
   body {
     background: var(--color-bg);
     color: var(--color-text-primary);
-    /* --font-active set on <html> by the settings provider (Font → Family);
-       falls back to the Public Sans stack when unset. Thai face appended so the
-       selected Latin font never strands Thai glyphs on the OS fallback. */
-    font-family: var(--font-active, var(--font-public-sans)),
-      var(--font-noto-thai), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
   /* Restore pointer cursor on interactive elements — Tailwind v4 preflight
@@ -478,7 +478,7 @@ button, a, input, select, textarea {
   border: 1px solid var(--divider);
   background-color: transparent;
   color: var(--color-text-primary);
-  font-size: 1rem; /* 16px — body */
+  font-size: var(--text-sm); /* 18px — same token as body text */
   outline: none;
   transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
 }
@@ -562,18 +562,18 @@ tbody tr {
 }
 
 /* ---- Typography utilities (MUI variant parity; h1-h3 use Barlow display) ---- */
-@utility text-h1 { font-family: var(--font-display); font-size: var(--text-h1); line-height: 1.25; font-weight: 800; }
-@utility text-h2 { font-family: var(--font-display); font-size: var(--text-h2); line-height: 1.333; font-weight: 800; }
+@utility text-h1 { font-family: var(--font-display); font-size: var(--text-h1); line-height: 1.3; font-weight: 800; }
+@utility text-h2 { font-family: var(--font-display); font-size: var(--text-h2); line-height: 1.35; font-weight: 800; }
 @utility text-h3 { font-family: var(--font-display); font-size: var(--text-h3); line-height: 1.5; font-weight: 700; }
-@utility text-h4 { font-size: var(--text-h4); line-height: 1.5; font-weight: 700; }
-@utility text-h5 { font-size: var(--text-h5); line-height: 1.5; font-weight: 700; }
-@utility text-h6 { font-size: var(--text-h6); line-height: 1.556; font-weight: 600; }
-@utility text-subtitle1 { font-size: 1rem; line-height: 1.5; font-weight: 600; }
-@utility text-subtitle2 { font-size: 0.875rem; line-height: 1.571; font-weight: 600; }
-@utility text-body1 { font-size: 1rem; line-height: 1.5; font-weight: 400; }
-@utility text-body2 { font-size: 0.875rem; line-height: 1.571; font-weight: 400; }
-@utility text-caption { font-size: 0.875rem; line-height: 1.5; font-weight: 400; }
-@utility text-overline { font-size: 0.875rem; line-height: 1.5; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+@utility text-h4 { font-size: var(--text-h4); line-height: 1.55; font-weight: 700; }
+@utility text-h5 { font-size: var(--text-h5); line-height: 1.55; font-weight: 700; }
+@utility text-h6 { font-size: var(--text-h6); line-height: 1.6; font-weight: 600; }
+@utility text-subtitle1 { font-size: 1.25rem; line-height: 1.6; font-weight: 600; }
+@utility text-subtitle2 { font-size: 1.125rem; line-height: 1.6; font-weight: 600; }
+@utility text-body1 { font-size: 1.25rem; line-height: 1.6; font-weight: 400; }
+@utility text-body2 { font-size: 1.125rem; line-height: 1.6; font-weight: 400; }
+@utility text-caption { font-size: 1.125rem; line-height: 1.6; font-weight: 400; }
+@utility text-overline { font-size: 1.125rem; line-height: 1.5; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* ---- Control-plane data face: machine identifiers, tabular figures aligned ---- */
 @utility text-data { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }

@@ -33,7 +33,7 @@ export function PayShell({ children }: { children: React.ReactNode }) {
 
       {!embed && (
         <nav className="fixed inset-x-0 bottom-0 z-50 bg-grey-900 px-4 py-2.5 text-white">
-          <p className="mb-1.5 text-center text-xs text-grey-500">
+          <p className="mb-1.5 text-center text-base text-grey-500">
             Demo Navigation — Customer Payment Flow ({PAY_LINKS.length} หน้า)
           </p>
           <div className="flex flex-wrap justify-center gap-1.5">
@@ -43,7 +43,7 @@ export function PayShell({ children }: { children: React.ReactNode }) {
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
                 className={cn(
-                  "rounded px-2.5 py-1 text-xs transition-colors",
+                  "rounded px-2.5 py-1 text-base transition-colors",
                   pathname === link.href
                     ? "bg-primary text-white"
                     : "bg-grey-700 text-grey-100 hover:bg-grey-600",

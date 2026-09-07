@@ -26,14 +26,14 @@ export function SuccessScreen() {
           <Check className="size-12 text-success-dark" strokeWidth={3} />
         </span>
         <h2 className="text-2xl font-bold text-grey-900">ชำระเงินสำเร็จ!</h2>
-        <p className="mt-1 text-sm text-grey-600">
+        <p className="mt-1 text-base text-grey-600">
           Transaction completed successfully
         </p>
       </div>
 
       <section className="overflow-hidden rounded-card bg-bg-paper shadow-card">
         <div className="bg-gradient-to-r from-success to-success-dark px-6 py-6 text-center text-white">
-          <p className="text-sm text-success-lighter">ยอดที่ชำระ</p>
+          <p className="text-base text-success-lighter">ยอดที่ชำระ</p>
           <p className="mt-1 text-3xl font-bold">{formatTHB(amount, 2)}</p>
         </div>
 
@@ -71,7 +71,7 @@ export function SuccessScreen() {
         </div>
       </section>
 
-      <p className="mt-6 text-center text-xs text-grey-500">
+      <p className="mt-6 text-center text-base text-grey-500">
         ใบเสร็จจะถูกส่งไปที่อีเมลที่ท่านระบุภายใน 5 นาที
       </p>
     </>
@@ -94,7 +94,7 @@ function ActionButton({
       className="flex flex-col items-center gap-1 rounded-lg py-2 text-primary transition-colors hover:bg-primary-lighter/40"
     >
       <Icon className="size-4" />
-      <span className="text-xs">{label}</span>
+      <span className="text-base">{label}</span>
     </button>
   );
 }
