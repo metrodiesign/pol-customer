@@ -17,7 +17,7 @@ export function LinkExpiredScreen() {
           <Clock className="size-12 text-white" strokeWidth={2.5} />
         </span>
         <h2 className="text-2xl font-bold text-warning-dark">ลิงก์หมดอายุแล้ว</h2>
-        <p className="mt-2 text-sm text-grey-600">Payment Link has expired</p>
+        <p className="mt-2 text-base text-grey-600">Payment Link has expired</p>
       </div>
 
       <section className="mb-6 rounded-card border border-warning/40 bg-bg-paper p-6 shadow-card">
@@ -25,7 +25,7 @@ export function LinkExpiredScreen() {
           <div className="flex items-start gap-3">
             <Info className="mt-0.5 size-4 shrink-0 text-warning-dark" />
             <div>
-              <p className="text-sm text-warning-dark/80">
+              <p className="text-base text-warning-dark/80">
                 ลิงก์ชำระเงินนี้หมดอายุแล้วเมื่อ
               </p>
               <p className="mt-1 font-semibold text-warning-dark">
@@ -39,7 +39,7 @@ export function LinkExpiredScreen() {
           <PayInfoRow
             label="Link Code"
             value={
-              <span className="font-mono text-xs font-semibold text-warning-dark">
+              <span className="font-mono text-base font-semibold text-warning-dark">
                 {session.linkCode}
               </span>
             }
@@ -52,7 +52,7 @@ export function LinkExpiredScreen() {
       <div className="mb-6 rounded-control border-l-4 border-warning bg-warning/10 p-4">
         <div className="flex items-start gap-3">
           <Lightbulb className="mt-0.5 size-4 shrink-0 text-warning-dark" />
-          <div className="text-sm text-warning-dark">
+          <div className="text-base text-warning-dark">
             <p className="font-semibold">ต้องการชำระเงิน?</p>
             <p className="mt-1 text-warning-dark/80">
               กรุณาติดต่อร้านค้าเพื่อขอลิงก์ชำระเงินใหม่

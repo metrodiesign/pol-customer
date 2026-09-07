@@ -27,9 +27,7 @@ import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import {
   useSettings,
-  FONT_FAMILY_VARS,
   type PresetName,
-  type FontFamily,
 } from "@/components/providers/settings-provider";
 
 const presets: { name: PresetName; color: string; dark: string }[] = [
@@ -40,8 +38,6 @@ const presets: { name: PresetName; color: string; dark: string }[] = [
   { name: "orange", color: "#fda92d", dark: "#b66816" },
   { name: "red", color: "#ff3030", dark: "#b71833" },
 ];
-
-const fonts: FontFamily[] = ["Public Sans", "Inter", "DM Sans", "Nunito Sans"];
 
 function IconButton({
   label,
@@ -137,10 +133,10 @@ export function SettingsDrawer({ variant = "white" }: SettingsDrawerProps) {
   const [open, setOpen] = useState(false);
 
   const { settings, setSetting, reset } = useSettings();
-  const { mode, contrast, rtl, compact, fontSize, navLayout, navColor, fontFamily } =
+  const { mode, contrast, rtl, compact, fontSize, navLayout, navColor } =
     settings;
 
-  const sizePct = ((fontSize - 12) / (20 - 12)) * 100;
+  const sizePct = ((fontSize - 14) / (20 - 14)) * 100;
   const layoutIcons = [PanelLeft, PanelTop, LayoutGrid];
   // index → navLayout (matches layoutIcons order: vertical / horizontal / mini)
   const NAV_LAYOUTS = ["vertical", "horizontal", "mini"] as const;
@@ -279,42 +275,7 @@ export function SettingsDrawer({ variant = "white" }: SettingsDrawerProps) {
 
           {/* Font */}
           <SectionCard label="Font">
-            <p className="mb-2 text-sm font-medium text-grey-600">Family</p>
-            <div className="grid grid-cols-2 gap-3">
-              {fonts.map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  onClick={() => setSetting("fontFamily", f)}
-                  className={cn(
-                    "flex h-[86px] flex-col items-center justify-center gap-1.5 rounded-xl border transition-colors",
-                    fontFamily === f
-                      ? "border-primary shadow-z8"
-                      : "border-grey-500/12",
-                  )}
-                  style={{ fontFamily: FONT_FAMILY_VARS[f] }}
-                >
-                  <span
-                    className={cn(
-                      "text-2xl font-bold",
-                      fontFamily === f ? "text-primary" : "text-grey-400",
-                    )}
-                  >
-                    Aa
-                  </span>
-                  <span
-                    className={cn(
-                      "text-xs font-medium",
-                      fontFamily === f ? "text-grey-800" : "text-grey-500",
-                    )}
-                  >
-                    {f}
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            <p className="mb-1 mt-4 text-sm font-medium text-grey-600">Size</p>
+            <p className="mb-1 text-sm font-medium text-grey-600">Size</p>
             <div className="relative pb-1 pt-7">
               <span
                 className="absolute top-0 z-10 -translate-x-1/2 rounded-md bg-grey-800 px-2 py-0.5 text-xs font-semibold text-white"
@@ -324,7 +285,7 @@ export function SettingsDrawer({ variant = "white" }: SettingsDrawerProps) {
               </span>
               <input
                 type="range"
-                min={12}
+                min={14}
                 max={20}
                 value={fontSize}
                 onChange={(e) => setSetting("fontSize", Number(e.target.value))}

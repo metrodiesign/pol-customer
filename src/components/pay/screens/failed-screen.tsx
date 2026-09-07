@@ -33,7 +33,7 @@ export function FailedScreen() {
           <X className="size-12 text-white" strokeWidth={3} />
         </span>
         <h2 className="text-2xl font-bold text-error-dark">ชำระเงินไม่สำเร็จ</h2>
-        <p className="mt-2 text-sm text-grey-600">Transaction failed</p>
+        <p className="mt-2 text-base text-grey-600">Transaction failed</p>
       </div>
 
       <section className="mb-4 rounded-card border border-error/30 bg-bg-paper p-6 shadow-card">
@@ -44,7 +44,7 @@ export function FailedScreen() {
               <p className="font-semibold text-error-dark">
                 สาเหตุ: วงเงินไม่เพียงพอ
               </p>
-              <p className="mt-1 text-sm text-error-dark/80">
+              <p className="mt-1 text-base text-error-dark/80">
                 กรุณาตรวจสอบวงเงินในบัตรของท่าน หรือติดต่อธนาคารผู้ออกบัตร
               </p>
             </div>
@@ -55,7 +55,7 @@ export function FailedScreen() {
           <PayInfoRow
             label="Error Code"
             value={
-              <span className="font-mono text-xs font-semibold text-error">
+              <span className="font-mono text-base font-semibold text-error">
                 INSUFFICIENT_FUNDS
               </span>
             }
@@ -73,7 +73,7 @@ export function FailedScreen() {
           <Lightbulb className="size-4 text-warning" />
           แนะนำ
         </h4>
-        <ul className="space-y-2 text-sm text-grey-600">
+        <ul className="space-y-2 text-base text-grey-600">
           {TIPS.map((tip) => (
             <li key={tip} className="flex gap-2">
               <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-grey-400" />

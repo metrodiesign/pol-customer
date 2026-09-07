@@ -76,10 +76,10 @@ export function SummaryScreen() {
                 <p className="font-semibold text-primary">
                   {policy.insuredName}
                 </p>
-                <p className="text-xs text-grey-500">{policy.docType}</p>
-                <p className="mt-1 text-sm text-grey-800">{policy.coverage}</p>
+                <p className="text-base text-grey-500">{policy.docType}</p>
+                <p className="mt-1 text-base text-grey-800">{policy.coverage}</p>
               </div>
-              <div className="shrink-0 text-right text-sm">
+              <div className="shrink-0 text-right text-base">
                 <p className="font-semibold tabular-nums text-grey-800">
                   {formatTHB(policy.amount, 2)}
                 </p>
@@ -110,7 +110,7 @@ export function SummaryScreen() {
           onChange={setAcceptedTerms}
           aria-label="ยอมรับเงื่อนไขและนโยบายความเป็นส่วนตัว"
         />
-        <p className="pt-2 text-sm text-grey-600">
+        <p className="pt-2 text-base text-grey-600">
           ข้าพเจ้ายอมรับ{" "}
           <span className="text-primary underline">เงื่อนไขกรมธรรม์</span> และ{" "}
           <span className="text-primary underline">ข้อกำหนดการใช้บริการ</span>{" "}

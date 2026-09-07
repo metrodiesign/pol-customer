@@ -42,7 +42,7 @@ interface PayInfoRowProps {
 /** แถว label ซ้าย / value ขวา ในการ์ดสรุป. */
 export function PayInfoRow({ label, value, className }: PayInfoRowProps) {
   return (
-    <div className={cn("flex justify-between gap-4 text-sm", className)}>
+    <div className={cn("flex justify-between gap-4 text-base", className)}>
       <span className="text-grey-600">{label}</span>
       <span className="text-right font-medium text-grey-800">{value}</span>
     </div>
@@ -64,7 +64,7 @@ export function PayHeroHeader({ icon, title, subtitle }: PayHeroHeaderProps) {
           {icon}
         </span>
         <h2 className="text-xl font-bold">{title}</h2>
-        <p className="mt-1 text-sm text-primary-lighter">{subtitle}</p>
+        <p className="mt-1 text-base text-primary-lighter">{subtitle}</p>
       </div>
     </div>
   );
@@ -73,7 +73,7 @@ export function PayHeroHeader({ icon, title, subtitle }: PayHeroHeaderProps) {
 /** บรรทัดความปลอดภัยท้ายจอ. */
 export function PaySecurityNote() {
   return (
-    <p className="mt-4 text-center text-xs text-grey-500">
+    <p className="mt-4 text-center text-base text-grey-500">
       การชำระเงินถูกเข้ารหัสด้วย TLS 1.3 · PCI-DSS Level 1 Certified
     </p>
   );

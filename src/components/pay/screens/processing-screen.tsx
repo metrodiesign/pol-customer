@@ -27,14 +27,14 @@ export function ProcessingScreen() {
       <h1 className="mb-2 text-center text-xl font-bold tracking-tight text-grey-800">
         กำลังตรวจสอบผลการชำระเงิน
       </h1>
-      <p className="mx-auto mb-4 max-w-[315px] text-center text-sm leading-relaxed text-grey-600">
+      <p className="mx-auto mb-4 max-w-[315px] text-center text-base leading-relaxed text-grey-600">
         เราได้รับข้อมูลจากหน้าชำระเงินแล้ว และกำลังยืนยันสถานะกับผู้ให้บริการ
       </p>
 
       {/* caution — ห้ามจ่ายซ้ำ */}
       <div className="mb-3 flex items-center gap-2.5 rounded-control border border-warning-light bg-warning-lighter p-3">
         <Info className="size-4 shrink-0 text-warning-dark" />
-        <p className="text-sm font-semibold leading-relaxed text-warning-darker">
+        <p className="text-base font-semibold leading-relaxed text-warning-darker">
           กรุณาอย่าชำระเงินซ้ำในระหว่างการตรวจสอบ
         </p>
       </div>
@@ -42,20 +42,20 @@ export function ProcessingScreen() {
       {/* สรุปยอด */}
       <div className="mb-3 rounded-card border border-[var(--divider)] bg-bg-paper p-4 shadow-card">
         <div className="flex items-baseline gap-3 border-b border-[var(--divider)] pb-3">
-          <span className="flex-1 text-sm text-grey-600">ยอดชำระ</span>
+          <span className="flex-1 text-base text-grey-600">ยอดชำระ</span>
           <span className="text-lg font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
           </span>
         </div>
         <div className="flex gap-3 border-b border-[var(--divider)] py-2.5">
-          <span className="flex-1 text-sm text-grey-600">เลขที่รายการ</span>
-          <span className="text-sm font-semibold text-grey-800">
+          <span className="flex-1 text-base text-grey-600">เลขที่รายการ</span>
+          <span className="text-base font-semibold text-grey-800">
             {session.invoiceNo}
           </span>
         </div>
         <div className="flex gap-3 pt-2.5">
-          <span className="flex-1 text-sm text-grey-600">วิธีชำระเงิน</span>
-          <span className="text-sm font-semibold text-grey-800">
+          <span className="flex-1 text-base text-grey-600">วิธีชำระเงิน</span>
+          <span className="text-base font-semibold text-grey-800">
             {CHANNEL_DISPLAY[session.channel].label}
           </span>
         </div>
@@ -73,7 +73,7 @@ export function ProcessingScreen() {
       {/* TLS badge */}
       <div className="mb-5 flex items-center justify-center gap-1.5 text-success-dark">
         <Lock className="size-3.5" />
-        <span className="text-xs font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
+        <span className="text-base font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
       </div>
 
       <button

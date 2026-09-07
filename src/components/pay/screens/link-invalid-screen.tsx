@@ -19,7 +19,7 @@ export function LinkInvalidScreen() {
         <h2 className="text-2xl font-bold text-grey-900">
           ไม่สามารถเปิดรายการนี้ได้
         </h2>
-        <p className="mt-2 text-sm text-grey-600">Link not available</p>
+        <p className="mt-2 text-base text-grey-600">Link not available</p>
       </div>
 
       <section className="mb-6 rounded-card border border-[var(--divider)] bg-bg-paper p-6 shadow-card">
@@ -27,10 +27,10 @@ export function LinkInvalidScreen() {
           <div className="flex items-start gap-3">
             <ShieldAlert className="mt-0.5 size-4 shrink-0 text-error-dark" />
             <div>
-              <p className="text-sm text-grey-700">
+              <p className="text-base text-grey-700">
                 ลิงก์ไม่ถูกต้อง หมดอายุ หรือไม่มีสิทธิ์เข้าถึง
               </p>
-              <p className="mt-1 font-mono text-xs font-semibold text-grey-500">
+              <p className="mt-1 font-mono text-base font-semibold text-grey-500">
                 LINK_NOT_AVAILABLE
               </p>
             </div>
@@ -41,7 +41,7 @@ export function LinkInvalidScreen() {
           <PayInfoRow
             label="รหัสอ้างอิง"
             value={
-              <span className="font-mono text-xs font-semibold text-grey-700">
+              <span className="font-mono text-base font-semibold text-grey-700">
                 ERR-LINK-4031
               </span>
             }
@@ -52,7 +52,7 @@ export function LinkInvalidScreen() {
       <div className="mb-6 rounded-control border-l-4 border-grey-300 bg-grey-100 p-4">
         <div className="flex items-start gap-3">
           <Lock className="mt-0.5 size-4 shrink-0 text-grey-500" />
-          <div className="text-sm text-grey-700">
+          <div className="text-base text-grey-700">
             <p className="font-semibold">เพื่อความปลอดภัย</p>
             <p className="mt-1 text-grey-600">
               กรุณาอย่าส่งต่อหรือเผยแพร่ลิงก์ชำระเงิน
