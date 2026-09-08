@@ -16,7 +16,7 @@ export function LinkInvalidScreen() {
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full border border-error-light/60 bg-error-lighter text-error-dark">
           <ShieldAlert className="size-11" strokeWidth={2} />
         </span>
-        <h2 className="text-2xl font-bold text-grey-900">
+        <h2 className="text-2xl font-medium text-grey-900">
           ไม่สามารถเปิดรายการนี้ได้
         </h2>
         <p className="mt-2 text-base text-grey-600">Link not available</p>
@@ -30,7 +30,7 @@ export function LinkInvalidScreen() {
               <p className="text-base text-grey-700">
                 ลิงก์ไม่ถูกต้อง หมดอายุ หรือไม่มีสิทธิ์เข้าถึง
               </p>
-              <p className="mt-1 font-mono text-base font-semibold text-grey-500">
+              <p className="mt-1 font-sans text-base font-semibold text-grey-500">
                 LINK_NOT_AVAILABLE
               </p>
             </div>
@@ -41,7 +41,7 @@ export function LinkInvalidScreen() {
           <PayInfoRow
             label="รหัสอ้างอิง"
             value={
-              <span className="font-mono text-base font-semibold text-grey-700">
+              <span className="font-sans text-base font-semibold text-grey-700">
                 ERR-LINK-4031
               </span>
             }

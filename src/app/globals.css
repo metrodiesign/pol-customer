@@ -109,12 +109,13 @@
      The whole ladder sits one rung above the old Latin scale — DB Sathorn X has
      a smaller x-height, and Thai stacks vowels above and below the baseline, so
      every step also carries more leading. ---- */
+  --font-weight-normal: 400;
   --text-xs: 1rem;                /* 16px ← floor */
   --text-xs--line-height: 1.625rem;
   --text-sm: 1.125rem;            /* 18px ← body (text-sm) */
   --text-sm--line-height: 1.75rem;
-  --text-base: 1.25rem;           /* 20px ← normal */
-  --text-base--line-height: 2rem;
+  --text-base: 1.125rem;          /* 18px ← normal */
+  --text-base--line-height: 1.75rem;
   --text-lg: 1.5rem;              /* 24px */
   --text-lg--line-height: 2.25rem;
   --text-xl: 1.75rem;             /* 28px */
@@ -357,7 +358,22 @@
     background: var(--color-bg);
     color: var(--color-text-primary);
     font-family: var(--font-sans);
+    /* DB Sathorn X has a 0.292em x-height; normalize it against a typical sans-serif face. */
+    font-size-adjust: 0.5;
+    font-weight: 400;
+    font-size: var(--text-base);
     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Keep machine-readable text at its declared size and weight; it uses IBM Plex Mono, not DB Sathorn X. */
+  .font-mono,
+  .text-data,
+  code,
+  kbd,
+  samp,
+  pre {
+    font-size-adjust: none;
+    font-weight: 400;
   }
   /* Restore pointer cursor on interactive elements — Tailwind v4 preflight
      removes the browser default cursor:pointer on <button>. */
@@ -570,13 +586,13 @@ tbody tr {
 @utility text-h6 { font-size: var(--text-h6); line-height: 1.6; font-weight: 600; }
 @utility text-subtitle1 { font-size: 1.25rem; line-height: 1.6; font-weight: 600; }
 @utility text-subtitle2 { font-size: 1.125rem; line-height: 1.6; font-weight: 600; }
-@utility text-body1 { font-size: 1.25rem; line-height: 1.6; font-weight: 400; }
-@utility text-body2 { font-size: 1.125rem; line-height: 1.6; font-weight: 400; }
-@utility text-caption { font-size: 1.125rem; line-height: 1.6; font-weight: 400; }
+@utility text-body1 { font-size: 1.25rem; line-height: 1.6; font-weight: var(--font-weight-normal); }
+@utility text-body2 { font-size: 1.125rem; line-height: 1.6; font-weight: var(--font-weight-normal); }
+@utility text-caption { font-size: 1.125rem; line-height: 1.6; font-weight: var(--font-weight-normal); }
 @utility text-overline { font-size: 1.125rem; line-height: 1.5; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* ---- Control-plane data face: machine identifiers, tabular figures aligned ---- */
-@utility text-data { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+@utility text-data { font-family: var(--font-mono); font-size-adjust: none; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 
 /* ---- Control-plane health spine: vertical state bar on list rows / cards.
    Decorative only — the same state is always shown in a text badge too. ---- */

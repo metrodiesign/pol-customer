@@ -9,7 +9,7 @@ export default function PayLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-svh bg-grey-200">
+    <div className="min-h-svh bg-grey-200 font-sans">
       <Suspense>
         <PayShell>{children}</PayShell>
       </Suspense>
