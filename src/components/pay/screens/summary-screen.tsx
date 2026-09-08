@@ -94,9 +94,9 @@ export function SummaryScreen() {
         title="สรุปค่าใช้จ่าย"
         icon={<Calculator className="size-4" />}
       >
-        <div className="flex justify-between text-lg font-bold">
-          <span className="text-grey-800">ยอดชำระ</span>
-          <span className="text-primary-dark">
+        <div className="flex items-baseline justify-between">
+          <span className="text-base font-semibold text-grey-800">ยอดชำระ</span>
+          <span className="font-sans text-[22px] font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
           </span>
         </div>

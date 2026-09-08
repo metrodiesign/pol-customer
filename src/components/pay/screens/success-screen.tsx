@@ -25,7 +25,7 @@ export function SuccessScreen() {
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full bg-success-lighter">
           <Check className="size-12 text-success-dark" strokeWidth={3} />
         </span>
-        <h2 className="text-2xl font-bold text-grey-900">ชำระเงินสำเร็จ!</h2>
+        <h2 className="text-2xl font-medium text-grey-900">ชำระเงินสำเร็จ!</h2>
         <p className="mt-1 text-base text-grey-600">
           Transaction completed successfully
         </p>

@@ -32,7 +32,7 @@ export function FailedScreen() {
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full bg-error shadow-error">
           <X className="size-12 text-white" strokeWidth={3} />
         </span>
-        <h2 className="text-2xl font-bold text-error-dark">ชำระเงินไม่สำเร็จ</h2>
+        <h2 className="text-2xl font-medium text-error-dark">ชำระเงินไม่สำเร็จ</h2>
         <p className="mt-2 text-base text-grey-600">Transaction failed</p>
       </div>
 
@@ -55,7 +55,7 @@ export function FailedScreen() {
           <PayInfoRow
             label="Error Code"
             value={
-              <span className="font-mono text-base font-semibold text-error">
+              <span className="font-sans text-base font-semibold text-error">
                 INSUFFICIENT_FUNDS
               </span>
             }

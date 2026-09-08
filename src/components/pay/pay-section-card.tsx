@@ -63,7 +63,7 @@ export function PayHeroHeader({ icon, title, subtitle }: PayHeroHeaderProps) {
         <span className="mx-auto mb-3 flex size-16 items-center justify-center rounded-full bg-white/20">
           {icon}
         </span>
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className="text-xl font-medium">{title}</h2>
         <p className="mt-1 text-base text-primary-lighter">{subtitle}</p>
       </div>
     </div>

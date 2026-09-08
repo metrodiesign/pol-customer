@@ -13,9 +13,9 @@ const PAY_LINKS = [
   { href: "/pay/processing", label: "4.Processing" },
   { href: "/pay/success", label: "5.สำเร็จ" },
   { href: "/pay/failed", label: "6.ไม่สำเร็จ" },
-  { href: "/pay/receipt", label: "7.ใบเสร็จ" },
   { href: "/pay/expired", label: "8.หมดอายุ" },
   { href: "/pay/invalid", label: "9.ลิงก์ไม่ถูกต้อง" },
+  { href: "/pay/receipt", label: "7.ใบเสร็จ" },
 ];
 
 /** โครงหน้าฝั่งลูกค้า — top nav + demo nav; ?embed=1 ซ่อนทั้งสอง (ฝังใน iframe). */

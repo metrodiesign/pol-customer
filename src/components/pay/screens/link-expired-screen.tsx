@@ -16,7 +16,7 @@ export function LinkExpiredScreen() {
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full bg-warning shadow-warning">
           <Clock className="size-12 text-white" strokeWidth={2.5} />
         </span>
-        <h2 className="text-2xl font-bold text-warning-dark">ลิงก์หมดอายุแล้ว</h2>
+        <h2 className="text-2xl font-medium text-warning-dark">ลิงก์หมดอายุแล้ว</h2>
         <p className="mt-2 text-base text-grey-600">Payment Link has expired</p>
       </div>
 
@@ -39,7 +39,7 @@ export function LinkExpiredScreen() {
           <PayInfoRow
             label="Link Code"
             value={
-              <span className="font-mono text-base font-semibold text-warning-dark">
+              <span className="font-sans text-base font-semibold text-warning-dark">
                 {session.linkCode}
               </span>
             }
