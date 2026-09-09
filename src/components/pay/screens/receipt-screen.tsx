@@ -115,7 +115,7 @@ export function ReceiptScreen() {
       </div>
       <Button
         variant="ghost"
-        onClick={() => router.push("/pay/success")}
+        onClick={() => router.push("/success")}
         className="mt-3 h-10 w-full text-grey-600"
       >
         <ArrowLeft className="size-4" />

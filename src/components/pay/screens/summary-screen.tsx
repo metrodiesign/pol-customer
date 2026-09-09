@@ -120,7 +120,7 @@ export function SummaryScreen() {
       </div>
 
       <Button
-        onClick={() => router.push("/pay/processing")}
+        onClick={() => router.push("/processing")}
         disabled={!ready}
         className="h-14 w-full text-base font-semibold"
       >

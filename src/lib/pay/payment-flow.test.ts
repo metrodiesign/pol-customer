@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
-import { canProceedToPayment, PROCESSING_STEPS } from "./payment-flow";
+import {
+  canProceedToPayment,
+  PROCESSING_STEPS,
+  resolvePayTokenStatus,
+} from "./payment-flow";
 
 describe("PAY_SESSION", () => {
   it("ผลรวมเบี้ยของทุกกรมธรรม์ = ยอดชำระ", () => {
@@ -19,6 +23,25 @@ describe("canProceedToPayment", () => {
     expect(canProceedToPayment({ amount: 100, acceptedTerms: true })).toBe(true);
     expect(canProceedToPayment({ amount: 0, acceptedTerms: true })).toBe(false);
     expect(canProceedToPayment({ amount: 100, acceptedTerms: false })).toBe(false);
+  });
+});
+
+describe("resolvePayTokenStatus", () => {
+  it("UUID ถูกต้อง -> ok (case-insensitive)", () => {
+    expect(resolvePayTokenStatus("3F2504E0-4F89-41D3-9A0C-0305E82C3301")).toBe("ok");
+    expect(resolvePayTokenStatus("3f2504e0-4f89-41d3-9a0c-0305e82c3301")).toBe("ok");
+  });
+
+  it("ไม่ใช่ UUID (ว่าง/สั้น/มั่ว) -> invalid", () => {
+    expect(resolvePayTokenStatus("")).toBe("invalid");
+    expect(resolvePayTokenStatus("abc")).toBe("invalid");
+    expect(resolvePayTokenStatus("not-a-uuid")).toBe("invalid");
+    expect(resolvePayTokenStatus("3f2504e0-4f89-41d3-9a0c-0305e82c33")).toBe("invalid");
+  });
+
+  it("seeded UUID -> สถานะพิเศษ", () => {
+    expect(resolvePayTokenStatus("00000000-0000-0000-0000-000000000e11")).toBe("expired");
+    expect(resolvePayTokenStatus("00000000-0000-0000-0000-0000000fa11e")).toBe("failed");
   });
 });
 

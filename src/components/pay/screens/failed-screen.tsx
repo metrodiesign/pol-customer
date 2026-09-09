@@ -85,7 +85,7 @@ export function FailedScreen() {
 
       <div className="space-y-3">
         <Button
-          onClick={() => router.push("/pay")}
+          onClick={() => router.push("/")}
           className="h-14 w-full bg-error text-base font-semibold text-white hover:bg-error-dark"
         >
           <RotateCw className="size-4" />
