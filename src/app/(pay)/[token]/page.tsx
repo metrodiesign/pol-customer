@@ -4,8 +4,9 @@ import { resolvePayTokenStatus } from "@/lib/pay/payment-flow";
 
 export const metadata = { title: "สรุปรายการชำระเงิน | Central Payment Gateway" };
 
-// entry จริงของ payment link — /pay/{token} (token = UUID PK). resolve แล้ว:
+// entry จริงของ payment link — /{token} (token = UUID PK). resolve แล้ว:
 // ok -> summary, expired/failed/invalid -> หน้า error ที่ตรงกัน.
+// static route (/invalid, /expired, ...) ชนะ dynamic segment นี้เสมอ.
 export default async function PayTokenPage({
   params,
 }: {

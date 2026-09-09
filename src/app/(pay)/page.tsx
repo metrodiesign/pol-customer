@@ -1,7 +1,7 @@
-import { SummaryScreen } from "@/components/pay/screens/summary-screen";
+import { redirect } from "next/navigation";
 
-export const metadata = { title: "สรุปรายการชำระเงิน | Central Payment Gateway" };
-
-export default function PaySummaryPage() {
-  return <SummaryScreen />;
+// "/" ไม่มี {token} -> ไม่มีรายการให้แสดง ส่งไปหน้า invalid.
+// summary เข้าถึงได้ทางเดียวคือ /{token} ที่ resolve เป็น ok.
+export default function PayRootPage() {
+  redirect("/invalid");
 }
