@@ -3,7 +3,7 @@ import Image from "next/image";
 /** Header เดียวกับหน้า login — โลโก้วิริยะในกล่องขาวบนแถบน้ำเงิน + tagline. */
 export function PayTopNav() {
   return (
-    <header className="flex min-h-[60px] shrink-0 items-stretch gap-3 bg-crop-blue pr-4 sm:min-h-[70px] sm:gap-4 sm:pr-6">
+    <header className="flex min-h-[60px] shrink-0 items-stretch justify-center gap-3 bg-crop-blue pr-4 sm:min-h-[70px] sm:gap-4 sm:pr-6">
       <span className="flex shrink-0 items-center bg-white px-3 sm:px-5">
         <Image
           src="/viriyah-logo.png"
