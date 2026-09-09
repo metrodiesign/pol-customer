@@ -69,7 +69,7 @@ export function LinkInvalidScreen() {
         </Button>
         <Button
           variant="outline"
-          onClick={() => router.push("/pay")}
+          onClick={() => router.push("/")}
           className="h-12 w-full"
         >
           กลับไปยังหน้าแรก

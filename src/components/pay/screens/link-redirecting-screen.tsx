@@ -72,7 +72,7 @@ export function LinkRedirectingScreen() {
         </Button>
         <button
           type="button"
-          onClick={() => router.push("/pay")}
+          onClick={() => router.push("/")}
           className="mt-3 min-h-11 text-base font-semibold text-grey-600 underline"
         >
           ยกเลิกและกลับไปตรวจสอบข้อมูล

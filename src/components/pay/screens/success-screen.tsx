@@ -63,7 +63,7 @@ export function SuccessScreen() {
           <ActionButton
             icon={ReceiptText}
             label="ใบเสร็จ"
-            onClick={() => router.push("/pay/receipt")}
+            onClick={() => router.push("/receipt")}
           />
           <ActionButton icon={Download} label="ดาวน์โหลด" />
           <ActionButton icon={Mail} label="ส่งอีเมล" />

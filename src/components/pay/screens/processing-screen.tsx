@@ -78,7 +78,7 @@ export function ProcessingScreen() {
 
       <button
         type="button"
-        onClick={() => router.push("/pay/success")}
+        onClick={() => router.push("/success")}
         className="flex min-h-13 w-full items-center justify-center gap-2 rounded-control border-[1.5px] border-primary bg-bg-paper text-base font-semibold text-primary transition-colors hover:bg-primary-soft"
       >
         <RefreshCw className="size-4" />
