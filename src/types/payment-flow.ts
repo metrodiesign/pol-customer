@@ -7,10 +7,14 @@ import type { PaymentChannel } from "@/types/order-payment";
 export interface PaySession {
   /** ช่องทางชำระเงินถูกกำหนดมากับลิงก์แล้ว ลูกค้าเลือกเองไม่ได้. */
   channel: PaymentChannel;
+  agentCode: string;      // รหัสตัวแทน (SaleCode) เช่น 00098
   merchantName: string;
   merchantId: string;
   merchantTaxId: string;
+  merchantPhone: string;
+  merchantEmail: string;
   serviceType: string;
+  orderNo: string;        // เลขที่คำสั่งซื้อจากฝั่ง pol-admin เช่น ORD6900000002
   invoiceNo: string;
   ref1: string;
   ref2: string;

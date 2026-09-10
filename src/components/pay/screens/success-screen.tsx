@@ -8,7 +8,8 @@ import {
   ReceiptText,
   Share2,
 } from "lucide-react";
-import { PAY_SESSION, SAVED_CARDS } from "@/lib/mock/payment-session";
+import { PAY_SESSION } from "@/lib/mock/payment-session";
+import { CHANNEL_DISPLAY } from "@/lib/payment-channel";
 import { formatTHB } from "@/lib/utils";
 import { PayInfoRow } from "../pay-section-card";
 
@@ -16,7 +17,6 @@ import { PayInfoRow } from "../pay-section-card";
 export function SuccessScreen() {
   const router = useRouter();
   const session = PAY_SESSION;
-  const card = SAVED_CARDS[0];
   const amount = session.amount;
 
   return (
@@ -38,21 +38,21 @@ export function SuccessScreen() {
         </div>
 
         <div className="space-y-3 px-6 py-5">
-          <PayInfoRow
-            label="Transaction ID"
-            value={session.receipt.transactionId}
-          />
+          <PayInfoRow label="เลขที่รายการ" value={session.invoiceNo} />
           <PayInfoRow
             label="วันที่/เวลา"
             value={`${session.receipt.paidDate}, ${session.receipt.paidTime}`}
           />
           <PayInfoRow
             label="วิธีชำระ"
-            value={`Visa **** ${card?.last4}`}
+            value={CHANNEL_DISPLAY[session.channel].label}
           />
-          <PayInfoRow label="ร้านค้า" value={session.merchantName} />
-          <PayInfoRow label="รายละเอียด" value={session.receipt.description} />
-          <PayInfoRow label="Reference" value={session.invoiceNo} />
+          <PayInfoRow label="ตัวแทน" value={session.merchantName} />
+          <PayInfoRow label="ชื่อผู้ชำระ" value={session.payer.name} />
+          <PayInfoRow label="รายละเอียด" value={session.serviceType} />
+          <PayInfoRow label="Reference" value={session.receipt.transactionId} />
+          <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} />
+          <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} />
           <PayInfoRow
             label="Authorization Code"
             value={session.receipt.authCode}

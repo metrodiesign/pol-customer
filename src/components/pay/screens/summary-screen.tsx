@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
+  Building2,
   Calculator,
   FileText,
   ReceiptText,
@@ -47,10 +48,22 @@ export function SummaryScreen() {
         icon={<FileText className="size-4" />}
       >
         <div className="divide-y divide-dashed divide-[var(--divider)]">
-          <PayInfoRow label="เลขที่รายการ" value={session.invoiceNo} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="เลขที่รายการ" value={session.orderNo} className="py-3 first:pt-0 last:pb-0" />
           <PayInfoRow label="ประเภทบริการ" value={session.serviceType} className="py-3 first:pt-0 last:pb-0" />
           <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} className="py-3 first:pt-0 last:pb-0" />
           <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} className="py-3 first:pt-0 last:pb-0" />
+        </div>
+      </PaySectionCard>
+
+      <PaySectionCard
+        title="ข้อมูลตัวแทน"
+        icon={<Building2 className="size-4" />}
+      >
+        <div className="divide-y divide-dashed divide-[var(--divider)]">
+          <PayInfoRow label="รหัสตัวแทน" value={session.agentCode} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="ชื่อตัวแทน" value={session.merchantName} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="โทรศัพท์" value={session.merchantPhone} className="py-3 first:pt-0 last:pb-0" />
+          <PayInfoRow label="อีเมล" value={session.merchantEmail} className="py-3 first:pt-0 last:pb-0" />
         </div>
       </PaySectionCard>
 
@@ -71,20 +84,20 @@ export function SummaryScreen() {
       >
         <ul className="divide-y divide-dashed divide-[var(--divider)]">
           {session.policies.map((policy) => (
-            <li key={policy.docNo} className="flex gap-3 py-3 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-semibold text-primary">
+            <li key={policy.docNo} className="py-3 first:pt-0 last:pb-0">
+              <div className="flex items-start justify-between gap-3">
+                <p className="min-w-0 font-semibold text-primary">
                   {policy.insuredName}
                 </p>
-                <p className="text-base text-grey-500">{policy.docType}</p>
-                <p className="mt-1 text-base text-grey-800">{policy.coverage}</p>
-              </div>
-              <div className="shrink-0 text-right text-base">
-                <p className="font-semibold tabular-nums text-grey-800">
+                <p className="shrink-0 text-base font-semibold tabular-nums text-grey-800">
                   {formatTHB(policy.amount, 2)}
                 </p>
-                <p className="mt-1 text-grey-800">{policy.docNo}</p>
               </div>
+              <p className="mt-1 text-base">
+                <span className="text-grey-800">{policy.docNo}</span>{" "}
+                <span className="text-grey-500">({policy.docType})</span>
+              </p>
+              <p className="mt-1 text-base text-grey-800">{policy.coverage}</p>
             </li>
           ))}
         </ul>
