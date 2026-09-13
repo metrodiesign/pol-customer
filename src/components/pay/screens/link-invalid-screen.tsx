@@ -4,9 +4,8 @@ import { useRouter } from "next/navigation";
 import { Headset, Lock, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
-import { PayInfoRow } from "../pay-section-card";
 
-/** ลิงก์ไม่ถูกต้อง/หมดสิทธิ์ — ต่างจากหน้าหมดอายุ (เปิดรายการไม่ได้ตั้งแต่ต้น). */
+/** ลิงก์ไม่พร้อมใช้งาน — ใช้ข้อความที่เข้าใจง่ายสำหรับลูกค้า. */
 export function LinkInvalidScreen() {
   const router = useRouter();
 
@@ -18,35 +17,26 @@ export function LinkInvalidScreen() {
           <ShieldAlert className="size-11" strokeWidth={2} />
         </span>
         <h2 className="text-2xl font-medium text-grey-900">
-          ไม่สามารถเปิดรายการนี้ได้
+          ขออภัย ไม่พบรายการชำระเงิน
         </h2>
-        <p className="mt-2 text-base text-grey-600">Link not available</p>
+        <p className="mt-2 text-base text-grey-600">
+          กรุณาตรวจสอบลิงก์ชำระเงินอีกครั้ง
+        </p>
       </div>
 
       <section className="mb-6 rounded-card border border-[var(--divider)] bg-bg-paper p-6 shadow-card">
-        <div className="mb-4 rounded-control border-l-4 border-error-light bg-error-lighter/50 p-4">
+        <div className="rounded-control border-l-4 border-error-light bg-error-lighter/50 p-4">
           <div className="flex items-start gap-3">
             <ShieldAlert className="mt-0.5 size-4 shrink-0 text-error-dark" />
             <div>
               <p className="text-base text-grey-700">
-                ลิงก์ไม่ถูกต้อง หมดอายุ หรือไม่มีสิทธิ์เข้าถึง
+                ไม่สามารถเปิดรายการชำระเงินจากลิงก์นี้ได้
               </p>
-              <p className="mt-1 font-sans text-base font-semibold text-grey-500">
-                LINK_NOT_AVAILABLE
+              <p className="mt-1 text-base text-grey-600">
+                กรุณาตรวจสอบลิงก์อีกครั้ง หรือติดต่อผู้ส่งเพื่อขอลิงก์ใหม่
               </p>
             </div>
           </div>
-        </div>
-
-        <div className="space-y-2">
-          <PayInfoRow
-            label="รหัสอ้างอิง"
-            value={
-              <span className="font-sans text-base font-semibold text-grey-700">
-                ERR-LINK-4031
-              </span>
-            }
-          />
         </div>
       </section>
 
@@ -54,10 +44,9 @@ export function LinkInvalidScreen() {
         <div className="flex items-start gap-3">
           <Lock className="mt-0.5 size-4 shrink-0 text-grey-500" />
           <div className="text-base text-grey-700">
-            <p className="font-semibold">เพื่อความปลอดภัย</p>
+            <p className="font-semibold">คำแนะนำเพื่อความปลอดภัย</p>
             <p className="mt-1 text-grey-600">
-              กรุณาอย่าส่งต่อหรือเผยแพร่ลิงก์ชำระเงิน
-              ลิงก์นี้ใช้ได้เฉพาะผู้รับที่ระบุไว้เท่านั้น
+              โปรดเปิดลิงก์ที่ได้รับจากผู้ส่งโดยตรง และอย่าเผยแพร่ลิงก์ชำระเงิน
             </p>
           </div>
         </div>
@@ -66,7 +55,7 @@ export function LinkInvalidScreen() {
       <div className="space-y-3">
         <Button className="h-14 w-full text-base font-semibold">
           <Headset className="size-4" />
-          ติดต่อผู้ส่งลิงก์
+          ติดต่อตัวแทน
         </Button>
         <Button
           variant="outline"
