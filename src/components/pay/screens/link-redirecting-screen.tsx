@@ -41,7 +41,7 @@ export function LinkRedirectingScreen() {
         </div>
         <div className="mt-2 flex items-baseline gap-3 border-t border-[var(--divider)] pt-2.5">
           <span className="flex-1 text-left text-base font-semibold text-grey-800">ยอดชำระ</span>
-          <span className="text-lg font-bold tabular-nums tracking-tight text-grey-800">
+          <span className="text-xl font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
           </span>
         </div>
@@ -62,7 +62,7 @@ export function LinkRedirectingScreen() {
         <span className="text-base font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
       </div>
 
-      <p className="mb-3 w-full max-w-none text-base leading-relaxed text-grey-500 sm:whitespace-nowrap">
+      <p className="mb-3 w-full max-w-none text-base text-grey-500 sm:whitespace-nowrap">
         หากหน้าไม่เปิดภายในไม่กี่วินาที กรุณากดปุ่มด้านล่าง
       </p>
 

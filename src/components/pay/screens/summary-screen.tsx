@@ -109,7 +109,7 @@ export function SummaryScreen() {
       >
         <div className="flex items-baseline justify-between">
           <span className="text-base font-semibold text-grey-800">ยอดชำระ</span>
-          <span className="font-sans text-[22px] font-bold tabular-nums tracking-tight text-grey-800">
+          <span className="font-sans text-xl font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
           </span>
         </div>
