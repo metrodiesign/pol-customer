@@ -2,7 +2,7 @@ import type { PaySession, SavedCard } from "@/types/payment-flow";
 
 /** รายการที่ลูกค้าเปิดจาก payment link — จำลอง session เดียวทั้ง flow. */
 export const PAY_SESSION: PaySession = {
-  channel: "card",
+  channel: "promptpay",
   agentCode: "00098",
   merchantName: "บริษัท ตัวแทน วิริยะประกันภัย จำกัด (มหาชน)",
   merchantId: "MCH-2025-001234",

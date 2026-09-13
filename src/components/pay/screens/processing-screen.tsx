@@ -50,7 +50,7 @@ export function ProcessingScreen() {
           </span>
         </div>
         <div className="flex gap-3 border-b border-[var(--divider)] py-2.5">
-          <span className="flex-1 text-base text-grey-600">วิธีชำระเงิน</span>
+          <span className="flex-1 text-base text-grey-600">ช่องทางการชำระเงิน</span>
           <span className="text-base font-semibold text-grey-800">
             {CHANNEL_DISPLAY[session.channel].label}
           </span>
