@@ -9,8 +9,8 @@ import {
   Share2,
 } from "lucide-react";
 import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
-import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { CHANNEL_DISPLAY } from "@/lib/payment-channel";
+import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
 import { PayInfoRow } from "../pay-section-card";
 
@@ -28,7 +28,7 @@ export function SuccessScreen() {
         </span>
         <h2 className="text-2xl font-medium text-grey-900">ชำระเงินสำเร็จ!</h2>
         <p className="mt-1 text-base text-grey-600">
-          Transaction completed successfully
+          รายการชำระเงินของคุณเสร็จสมบูรณ์
         </p>
       </div>
 
@@ -38,29 +38,55 @@ export function SuccessScreen() {
           <p className="mt-1 text-3xl font-bold">{formatTHB(amount, 2)}</p>
         </div>
 
-        <div className="space-y-3 px-6 py-5">
-          <PayInfoRow label="เลขที่รายการ" value={session.invoiceNo} />
+        <div className="divide-y divide-[var(--divider)] px-6 py-5">
+          <PayInfoRow
+            label="เลขที่รายการ"
+            value={session.invoiceNo}
+            className="py-3 first:pt-0 last:pb-0"
+          />
           <PayInfoRow
             label="วันที่/เวลา"
             value={`${session.receipt.paidDate}, ${session.receipt.paidTime}`}
+            className="py-3 first:pt-0 last:pb-0"
           />
           <PayInfoRow
-            label="วิธีชำระ"
+            label="ช่องทางการชำระเงิน"
             value={CHANNEL_DISPLAY[session.channel].label}
+            className="py-3 first:pt-0 last:pb-0"
           />
-          <PayInfoRow label="ตัวแทน" value={session.merchantName} />
-          <PayInfoRow label="ชื่อผู้ชำระ" value={session.payer.name} />
-          <PayInfoRow label="รายละเอียด" value={session.serviceType} />
-          <PayInfoRow label="Reference" value={session.receipt.transactionId} />
-          <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} />
-          <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} />
           <PayInfoRow
-            label="Authorization Code"
-            value={session.receipt.authCode}
+            label="ชื่อตัวแทน"
+            value={session.merchantName}
+            className="py-3 first:pt-0 last:pb-0"
+          />
+          <PayInfoRow
+            label="ชื่อผู้ชำระ"
+            value={session.payer.name}
+            className="py-3 first:pt-0 last:pb-0"
+          />
+          <PayInfoRow
+            label="รายละเอียด"
+            value={session.serviceType}
+            className="py-3 first:pt-0 last:pb-0"
+          />
+          <PayInfoRow
+            label="เลขที่อ้างอิงการชำระเงิน"
+            value={session.receipt.transactionId}
+            className="py-3 first:pt-0 last:pb-0"
+          />
+          <PayInfoRow
+            label="หมายเลขอ้างอิง 1"
+            value={session.ref1}
+            className="py-3 first:pt-0 last:pb-0"
+          />
+          <PayInfoRow
+            label="หมายเลขอ้างอิง 2"
+            value={session.ref2}
+            className="py-3 first:pt-0 last:pb-0"
           />
         </div>
 
-        <div className="grid grid-cols-4 gap-2 border-t border-[var(--divider)] bg-grey-100 px-6 py-4">
+        <div className="grid grid-cols-2 gap-2 border-t border-[var(--divider)] bg-grey-100 px-6 py-4 md:grid-cols-4">
           <ActionButton
             icon={ReceiptText}
             label="ใบเสร็จ"
