@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Headset, Lock, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PayInfoRow } from "../pay-section-card";
 
 /** ลิงก์ไม่ถูกต้อง/หมดสิทธิ์ — ต่างจากหน้าหมดอายุ (เปิดรายการไม่ได้ตั้งแต่ต้น). */
@@ -10,7 +11,7 @@ export function LinkInvalidScreen() {
   const router = useRouter();
 
   return (
-    <>
+    <PayScreenFrame>
       <div className="py-8 text-center">
         {/* วงจาง ไม่ทึบ — สื่อว่าเปิดไม่ได้ แต่ไม่รุนแรงแบบ error เต็ม */}
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full border border-error-light/60 bg-error-lighter text-error-dark">
@@ -75,6 +76,6 @@ export function LinkInvalidScreen() {
           กลับไปยังหน้าแรก
         </Button>
       </div>
-    </>
+    </PayScreenFrame>
   );
 }

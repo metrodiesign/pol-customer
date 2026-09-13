@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Info, Lock, RefreshCw, Search } from "lucide-react";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { CHANNEL_DISPLAY } from "@/lib/payment-channel";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
@@ -12,7 +13,8 @@ export function ProcessingScreen() {
   const session = PAY_SESSION;
 
   return (
-    <div className="pt-8 pb-4">
+    <PayScreenFrame>
+      <div className="pt-8 pb-4">
       {/* hero spinner */}
       <div className="mb-4 flex justify-center">
         <div className="relative flex size-24 items-center justify-center">
@@ -84,6 +86,7 @@ export function ProcessingScreen() {
         <RefreshCw className="size-4" />
         ตรวจสอบสถานะอีกครั้ง
       </button>
-    </div>
+      </div>
+    </PayScreenFrame>
   );
 }

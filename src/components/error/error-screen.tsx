@@ -1,3 +1,4 @@
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PayTopNav } from "@/components/pay/pay-top-nav";
 
 // error screen ฝั่งลูกค้า — โครงเดียวกับหน้า /pay (top nav วิริยะ + การ์ดกลางจอ)
@@ -15,13 +16,15 @@ export function ErrorScreen({ code, title, message, children }: ErrorScreenProps
   return (
     <div className="min-h-svh bg-grey-200 font-sans">
       <PayTopNav />
-      <main className="mx-auto max-w-lg px-4 py-16">
-        <div className="rounded-card border border-[var(--divider)] bg-bg-paper px-6 py-12 text-center shadow-card">
-          {code && <p className="mb-4 text-6xl font-bold text-crop-blue">{code}</p>}
-          <h1 className="text-2xl font-medium text-grey-900">{title}</h1>
-          <p className="mt-2 text-base text-grey-600">{message}</p>
-          {children && <div className="mt-8 w-full space-y-3">{children}</div>}
-        </div>
+      <main className="mx-auto w-full max-w-[1200px] px-4 py-12 md:px-8 md:py-16 mlg:px-10 mlg:py-20">
+        <PayScreenFrame>
+          <div className="rounded-card border border-[var(--divider)] bg-bg-paper px-6 py-12 text-center shadow-card md:px-10 md:py-14">
+            {code && <p className="mb-4 text-6xl font-bold text-crop-blue">{code}</p>}
+            <h1 className="text-2xl font-medium text-grey-900">{title}</h1>
+            <p className="mt-2 text-base text-grey-600">{message}</p>
+            {children && <div className="mt-8 w-full space-y-3">{children}</div>}
+          </div>
+        </PayScreenFrame>
       </main>
     </div>
   );

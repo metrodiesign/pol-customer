@@ -2,6 +2,7 @@
 
 import { Clock, Headset, Info, Lightbulb, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
 import { PayInfoRow } from "../pay-section-card";
@@ -10,7 +11,7 @@ export function LinkExpiredScreen() {
   const session = PAY_SESSION;
 
   return (
-    <>
+    <PayScreenFrame>
       <div className="py-8 text-center">
         {/* หมดอายุ = warning ไม่ใช่ error — ส้มทึบ อ่านออกทันทีเหมือนจอไม่สำเร็จ */}
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full bg-warning shadow-warning">
@@ -72,6 +73,6 @@ export function LinkExpiredScreen() {
           ติดต่อฝ่ายสนับสนุน
         </Button>
       </div>
-    </>
+    </PayScreenFrame>
   );
 }

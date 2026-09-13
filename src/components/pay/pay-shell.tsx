@@ -11,7 +11,7 @@ export function PayShell({ children }: { children: React.ReactNode }) {
     <>
       {!embed && <PayTopNav />}
 
-      <main className="mx-auto max-w-lg px-4 py-6">{children}</main>
+      <main className="mx-auto w-full max-w-lg px-4 py-6 md:max-w-[720px] md:px-8 md:py-8 mlg:max-w-[1200px] mlg:px-10 mlg:py-10">{children}</main>
     </>
   );
 }

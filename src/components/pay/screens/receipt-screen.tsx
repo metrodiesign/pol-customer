@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Download, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PAY_SESSION, SAVED_CARDS } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
 
@@ -13,7 +14,7 @@ export function ReceiptScreen() {
   const card = SAVED_CARDS[0];
 
   return (
-    <>
+    <PayScreenFrame variant="document">
       <section className="overflow-hidden rounded-card bg-bg-paper shadow-z16">
         <header className="border-b border-dashed border-[var(--divider)] px-6 py-6 text-center">
           <p className="text-base font-medium text-grey-800">ใบเสร็จรับเงินอิเล็กทรอนิกส์</p>
@@ -61,11 +62,11 @@ export function ReceiptScreen() {
                   <p className="text-base text-grey-500">{policy.docType}</p>
                   <p className="mt-1 text-grey-800">{policy.coverage}</p>
                 </div>
-                <div className="shrink-0 text-right">
+                <div className="min-w-0 max-w-[42%] text-right">
                   <p className="font-semibold tabular-nums text-grey-800">
                     {formatTHB(policy.amount, 2)}
                   </p>
-                  <p className="mt-1 text-grey-800">{policy.docNo}</p>
+                  <p className="mt-1 text-grey-800 [overflow-wrap:anywhere]">{policy.docNo}</p>
                 </div>
               </li>
             ))}
@@ -103,12 +104,12 @@ export function ReceiptScreen() {
         </footer>
       </section>
 
-      <div className="mt-6 grid grid-cols-2 gap-3">
-        <Button variant="outline" className="h-12">
+      <div className="mt-6 grid grid-cols-2 gap-3 md:flex">
+        <Button variant="outline" className="h-12 w-full md:flex-1">
           <Download className="size-4" />
           ดาวน์โหลด PDF
         </Button>
-        <Button variant="outline" className="h-12" onClick={() => window.print()}>
+        <Button variant="outline" className="h-12 w-full md:flex-1" onClick={() => window.print()}>
           <Printer className="size-4" />
           พิมพ์ใบเสร็จ
         </Button>
@@ -121,7 +122,7 @@ export function ReceiptScreen() {
         <ArrowLeft className="size-4" />
         กลับ
       </Button>
-    </>
+    </PayScreenFrame>
   );
 }
 
@@ -133,9 +134,9 @@ function ReceiptRow({
   value: string;
 }) {
   return (
-    <div className="flex justify-between gap-4 border-b border-grey-200 py-1.5 last:border-0">
-      <dt className="text-grey-600">{label}</dt>
-      <dd className="text-right font-sans text-base">
+    <div className="flex items-start justify-between gap-4 border-b border-grey-200 py-1.5 last:border-0">
+      <dt className="min-w-0 flex-1 text-grey-600">{label}</dt>
+      <dd className="min-w-0 max-w-[65%] text-right font-sans text-base [overflow-wrap:anywhere]">
         {value}
       </dd>
     </div>

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { ArrowRight, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
 
@@ -12,7 +13,8 @@ export function LinkRedirectingScreen() {
   const session = PAY_SESSION;
 
   return (
-    <div className="flex flex-col items-center pt-8 pb-4 text-center">
+    <PayScreenFrame>
+      <div className="flex flex-col items-center pt-8 pb-4 text-center">
       {/* spinner */}
       <div className="relative mb-6 flex size-24 items-center justify-center">
         <span className="absolute inset-0 rounded-full bg-primary-lighter [animation:vring_1.8s_ease-out_infinite]" />
@@ -62,7 +64,7 @@ export function LinkRedirectingScreen() {
         <span className="text-base font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
       </div>
 
-      <p className="mb-3 w-full max-w-none text-base text-grey-500 sm:whitespace-nowrap">
+      <p className="mb-3 w-full max-w-[360px] text-base text-grey-500">
         หากหน้าไม่เปิดภายในไม่กี่วินาที กรุณากดปุ่มด้านล่าง
       </p>
 
@@ -78,6 +80,7 @@ export function LinkRedirectingScreen() {
           ยกเลิกและกลับไปตรวจสอบข้อมูล
         </button>
       </div>
-    </div>
+      </div>
+    </PayScreenFrame>
   );
 }
