@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
+import { CHANNEL_DISPLAY } from "@/lib/payment-channel";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
 
@@ -33,7 +34,7 @@ export function LinkRedirectingScreen() {
 
       {/* สรุปยอด */}
       <div className="w-full rounded-card border border-[var(--divider)] bg-bg-paper p-4 shadow-card">
-        <div className="flex items-baseline gap-3">
+        <div className="flex gap-3 border-b border-[var(--divider)] pb-3">
           <span className="flex-1 text-left text-base text-grey-600">
             เลขที่รายการ
           </span>
@@ -41,7 +42,15 @@ export function LinkRedirectingScreen() {
             {session.invoiceNo}
           </span>
         </div>
-        <div className="mt-2 flex items-baseline gap-3 border-t border-[var(--divider)] pt-2.5">
+        <div className="flex gap-3 border-b border-[var(--divider)] py-2.5">
+          <span className="flex-1 text-left text-base text-grey-600">
+            ช่องทางการชำระเงิน
+          </span>
+          <span className="text-base font-semibold text-grey-800">
+            {CHANNEL_DISPLAY[session.channel].label}
+          </span>
+        </div>
+        <div className="flex items-baseline gap-3 pt-2.5">
           <span className="flex-1 text-left text-base font-semibold text-grey-800">ยอดชำระ</span>
           <span className="text-xl font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
