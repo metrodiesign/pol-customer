@@ -8,6 +8,7 @@ import {
   ReceiptText,
   Share2,
 } from "lucide-react";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { CHANNEL_DISPLAY } from "@/lib/payment-channel";
 import { formatTHB } from "@/lib/utils";
@@ -20,7 +21,7 @@ export function SuccessScreen() {
   const amount = session.amount;
 
   return (
-    <>
+    <PayScreenFrame>
       <div className="py-8 text-center">
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full bg-success-lighter">
           <Check className="size-12 text-success-dark" strokeWidth={3} />
@@ -74,7 +75,7 @@ export function SuccessScreen() {
       <p className="mt-6 text-center text-base text-grey-500">
         ใบเสร็จจะถูกส่งไปที่อีเมลที่ท่านระบุภายใน 5 นาที
       </p>
-    </>
+    </PayScreenFrame>
   );
 }
 

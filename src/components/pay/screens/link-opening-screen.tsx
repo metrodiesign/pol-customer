@@ -1,6 +1,7 @@
 "use client";
 
 import { Lock, ShieldCheck } from "lucide-react";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { formatTHB } from "@/lib/utils";
 
@@ -9,7 +10,8 @@ export function LinkOpeningScreen() {
   const session = PAY_SESSION;
 
   return (
-    <div className="flex flex-col items-center pt-8 pb-4 text-center">
+    <PayScreenFrame>
+      <div className="flex flex-col items-center pt-8 pb-4 text-center">
       {/* spinner */}
       <div className="relative mb-6 flex size-24 items-center justify-center">
         <span className="absolute inset-0 rounded-full bg-primary-lighter [animation:vring_2s_ease-out_infinite]" />
@@ -58,6 +60,7 @@ export function LinkOpeningScreen() {
         <Lock className="size-3.5" />
         <span className="text-base font-semibold">การเชื่อมต่อเข้ารหัสแบบ TLS</span>
       </div>
-    </div>
+      </div>
+    </PayScreenFrame>
   );
 }

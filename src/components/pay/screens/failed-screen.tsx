@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import { PayScreenFrame } from "@/components/pay/pay-screen-frame";
 import { PAY_SESSION } from "@/lib/mock/payment-session";
 import { PayInfoRow } from "../pay-section-card";
 
@@ -26,7 +27,7 @@ export function FailedScreen() {
   const session = PAY_SESSION;
 
   return (
-    <>
+    <PayScreenFrame>
       <div className="py-8 text-center">
         {/* วงกลมแดงทึบ — error-lighter (#ffe9d5) เป็นโทนพีช อ่านเหมือน warning จึงไม่ใช้ */}
         <span className="mx-auto mb-4 flex size-24 items-center justify-center rounded-full bg-error shadow-error">
@@ -96,6 +97,6 @@ export function FailedScreen() {
           ติดต่อฝ่ายสนับสนุน
         </Button>
       </div>
-    </>
+    </PayScreenFrame>
   );
 }

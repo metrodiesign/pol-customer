@@ -43,103 +43,109 @@ export function SummaryScreen() {
         subtitle="กรุณาตรวจสอบรายละเอียดก่อนชำระเงิน"
       />
 
-      <PaySectionCard
-        title="ข้อมูลธุรกรรม"
-        icon={<FileText className="size-4" />}
-      >
-        <div className="divide-y divide-dashed divide-[var(--divider)]">
-          <PayInfoRow label="เลขที่รายการ" value={session.orderNo} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="ประเภทบริการ" value={session.serviceType} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} className="py-3 first:pt-0 last:pb-0" />
+      <div className="mlg:grid mlg:grid-cols-[minmax(0,2fr)_minmax(320px,1fr)] mlg:items-start mlg:gap-6">
+        <div className="min-w-0">
+          <PaySectionCard
+            title="ข้อมูลธุรกรรม"
+            icon={<FileText className="size-4" />}
+          >
+            <div className="divide-y divide-dashed divide-[var(--divider)]">
+              <PayInfoRow label="เลขที่รายการ" value={session.orderNo} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="ประเภทบริการ" value={session.serviceType} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="หมายเลขอ้างอิง 1" value={session.ref1} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="หมายเลขอ้างอิง 2" value={session.ref2} className="py-3 first:pt-0 last:pb-0" />
+            </div>
+          </PaySectionCard>
+
+          <PaySectionCard
+            title="ข้อมูลตัวแทน"
+            icon={<Building2 className="size-4" />}
+          >
+            <div className="divide-y divide-dashed divide-[var(--divider)]">
+              <PayInfoRow label="รหัสตัวแทน" value={session.agentCode} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="ชื่อตัวแทน" value={session.merchantName} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="โทรศัพท์" value={session.merchantPhone} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="อีเมล" value={session.merchantEmail} className="py-3 first:pt-0 last:pb-0" />
+            </div>
+          </PaySectionCard>
+
+          <PaySectionCard
+            title="ข้อมูลลูกค้า"
+            icon={<User className="size-4" />}
+          >
+            <div className="divide-y divide-dashed divide-[var(--divider)]">
+              <PayInfoRow label="ชื่อ - นามสกุล" value={session.payer.name} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="โทรศัพท์" value={session.payer.phone} className="py-3 first:pt-0 last:pb-0" />
+              <PayInfoRow label="อีเมล" value={session.payer.email} className="py-3 first:pt-0 last:pb-0" />
+            </div>
+          </PaySectionCard>
+
+          <PaySectionCard
+            title={`รายการกรมธรรม์ (${session.policies.length})`}
+            icon={<ShieldCheck className="size-4" />}
+          >
+            <ul className="divide-y divide-dashed divide-[var(--divider)]">
+              {session.policies.map((policy) => (
+                <li key={policy.docNo} className="py-3 first:pt-0 last:pb-0">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="min-w-0 font-semibold text-primary">
+                      {policy.insuredName}
+                    </p>
+                    <p className="shrink-0 text-base font-semibold tabular-nums text-grey-800">
+                      {formatTHB(policy.amount, 2)}
+                    </p>
+                  </div>
+                  <p className="mt-1 text-base">
+                    <span className="text-grey-800">{policy.docNo}</span>{" "}
+                    <span className="text-grey-500">({policy.docType})</span>
+                  </p>
+                  <p className="mt-1 text-base text-grey-800">{policy.coverage}</p>
+                </li>
+              ))}
+            </ul>
+          </PaySectionCard>
         </div>
-      </PaySectionCard>
 
-      <PaySectionCard
-        title="ข้อมูลตัวแทน"
-        icon={<Building2 className="size-4" />}
-      >
-        <div className="divide-y divide-dashed divide-[var(--divider)]">
-          <PayInfoRow label="รหัสตัวแทน" value={session.agentCode} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="ชื่อตัวแทน" value={session.merchantName} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="โทรศัพท์" value={session.merchantPhone} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="อีเมล" value={session.merchantEmail} className="py-3 first:pt-0 last:pb-0" />
-        </div>
-      </PaySectionCard>
+        <aside className="min-w-0 mlg:sticky mlg:top-6 mlg:self-start">
+          <PaySectionCard
+            title="สรุปค่าใช้จ่าย"
+            icon={<Calculator className="size-4" />}
+          >
+            <div className="flex items-baseline justify-between">
+              <span className="text-base font-semibold text-grey-800">ยอดชำระ</span>
+              <span className="font-sans text-xl font-bold tabular-nums tracking-tight text-grey-800">
+                {formatTHB(session.amount, 2)}
+              </span>
+            </div>
+          </PaySectionCard>
 
-      <PaySectionCard
-        title="ข้อมูลลูกค้า"
-        icon={<User className="size-4" />}
-      >
-        <div className="divide-y divide-dashed divide-[var(--divider)]">
-          <PayInfoRow label="ชื่อ - นามสกุล" value={session.payer.name} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="โทรศัพท์" value={session.payer.phone} className="py-3 first:pt-0 last:pb-0" />
-          <PayInfoRow label="อีเมล" value={session.payer.email} className="py-3 first:pt-0 last:pb-0" />
-        </div>
-      </PaySectionCard>
+          <PayChannelCard channel={session.channel} />
 
-      <PaySectionCard
-        title={`รายการกรมธรรม์ (${session.policies.length})`}
-        icon={<ShieldCheck className="size-4" />}
-      >
-        <ul className="divide-y divide-dashed divide-[var(--divider)]">
-          {session.policies.map((policy) => (
-            <li key={policy.docNo} className="py-3 first:pt-0 last:pb-0">
-              <div className="flex items-start justify-between gap-3">
-                <p className="min-w-0 font-semibold text-primary">
-                  {policy.insuredName}
-                </p>
-                <p className="shrink-0 text-base font-semibold tabular-nums text-grey-800">
-                  {formatTHB(policy.amount, 2)}
-                </p>
-              </div>
-              <p className="mt-1 text-base">
-                <span className="text-grey-800">{policy.docNo}</span>{" "}
-                <span className="text-grey-500">({policy.docType})</span>
-              </p>
-              <p className="mt-1 text-base text-grey-800">{policy.coverage}</p>
-            </li>
-          ))}
-        </ul>
-      </PaySectionCard>
+          <div className="mb-4 flex items-start gap-2 rounded-card border border-[var(--divider)] bg-bg-paper p-4 shadow-card">
+            <Checkbox
+              checked={acceptedTerms}
+              onChange={setAcceptedTerms}
+              aria-label="ยอมรับเงื่อนไขและนโยบายความเป็นส่วนตัว"
+            />
+            <p className="pt-2 text-base text-grey-600">
+              ข้าพเจ้ายอมรับ{" "}
+              <span className="text-primary underline">เงื่อนไขกรมธรรม์</span> และ{" "}
+              <span className="text-primary underline">ข้อกำหนดการใช้บริการ</span>{" "}
+              รวมถึงยินยอมให้เก็บรวบรวมและใช้ข้อมูลส่วนบุคคลตาม{" "}
+              <span className="text-primary underline">นโยบายความเป็นส่วนตัว</span>
+            </p>
+          </div>
 
-      <PaySectionCard
-        title="สรุปค่าใช้จ่าย"
-        icon={<Calculator className="size-4" />}
-      >
-        <div className="flex items-baseline justify-between">
-          <span className="text-base font-semibold text-grey-800">ยอดชำระ</span>
-          <span className="font-sans text-xl font-bold tabular-nums tracking-tight text-grey-800">
-            {formatTHB(session.amount, 2)}
-          </span>
-        </div>
-      </PaySectionCard>
-
-      <PayChannelCard channel={session.channel} />
-
-      <div className="mb-4 flex items-start gap-2 rounded-control bg-grey-200 p-3">
-        <Checkbox
-          checked={acceptedTerms}
-          onChange={setAcceptedTerms}
-          aria-label="ยอมรับเงื่อนไขและนโยบายความเป็นส่วนตัว"
-        />
-        <p className="pt-2 text-base text-grey-600">
-          ข้าพเจ้ายอมรับ{" "}
-          <span className="text-primary underline">เงื่อนไขกรมธรรม์</span> และ{" "}
-          <span className="text-primary underline">ข้อกำหนดการใช้บริการ</span>{" "}
-          รวมถึงยินยอมให้เก็บรวบรวมและใช้ข้อมูลส่วนบุคคลตาม{" "}
-          <span className="text-primary underline">นโยบายความเป็นส่วนตัว</span>
-        </p>
+          <Button
+            onClick={() => router.push("/processing")}
+            disabled={!ready}
+            className="h-14 w-full text-base font-semibold"
+          >
+            ดำเนินการชำระเงิน
+          </Button>
+          <PaySecurityNote />
+        </aside>
       </div>
-
-      <Button
-        onClick={() => router.push("/processing")}
-        disabled={!ready}
-        className="h-14 w-full text-base font-semibold"
-      >
-        ดำเนินการชำระเงิน
-      </Button>
-      <PaySecurityNote />
     </>
   );
 }
