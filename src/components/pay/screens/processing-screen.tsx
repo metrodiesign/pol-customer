@@ -27,14 +27,14 @@ export function ProcessingScreen() {
       <h1 className="mb-2 text-center text-xl font-medium tracking-tight text-grey-800">
         กำลังตรวจสอบผลการชำระเงิน
       </h1>
-      <p className="mx-auto mb-4 max-w-[315px] text-center text-base leading-relaxed text-grey-600">
+      <p className="mx-auto mb-4 max-w-[315px] text-center text-base text-grey-600">
         เราได้รับข้อมูลจากหน้าชำระเงินแล้ว และกำลังยืนยันสถานะกับผู้ให้บริการ
       </p>
 
       {/* caution — ห้ามจ่ายซ้ำ */}
       <div className="mb-3 flex items-center gap-2.5 rounded-control border border-warning-light bg-warning-lighter p-3">
         <Info className="size-4 shrink-0 text-warning-dark" />
-        <p className="text-base font-semibold leading-relaxed text-warning-darker">
+        <p className="text-base font-semibold text-warning-darker">
           กรุณาอย่าชำระเงินซ้ำในระหว่างการตรวจสอบ
         </p>
       </div>
@@ -55,7 +55,7 @@ export function ProcessingScreen() {
         </div>
         <div className="flex items-baseline gap-3 pt-2.5">
           <span className="flex-1 text-base font-semibold text-grey-800">ยอดชำระ</span>
-          <span className="font-sans text-[22px] font-bold tabular-nums tracking-tight text-grey-800">
+          <span className="font-sans text-xl font-bold tabular-nums tracking-tight text-grey-800">
             {formatTHB(session.amount, 2)}
           </span>
         </div>

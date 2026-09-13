@@ -18,7 +18,7 @@ export function PayChannelCard({ channel }: { channel: PaymentChannel }) {
           />
           <span className="flex min-w-0 flex-1 flex-col gap-1">
             <span className="text-base font-bold text-grey-800">{display.label}</span>
-            <span className="text-base leading-relaxed text-grey-500">
+            <span className="text-base text-grey-500">
               {display.caption}
             </span>
           </span>

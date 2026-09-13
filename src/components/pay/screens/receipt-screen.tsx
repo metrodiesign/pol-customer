@@ -85,7 +85,7 @@ export function ReceiptScreen() {
             <hr className="border-[var(--divider)]" />
             <div className="flex items-baseline justify-between">
               <dt className="text-base font-semibold text-grey-800">รวมทั้งสิ้น</dt>
-              <dd className="font-sans text-[22px] font-bold tabular-nums tracking-tight text-grey-800">
+              <dd className="font-sans text-xl font-bold tabular-nums tracking-tight text-grey-800">
                 {formatTHB(session.amount, 2)}
               </dd>
             </div>
