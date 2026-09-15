@@ -127,7 +127,7 @@ export function SummaryScreen() {
               onChange={setAcceptedTerms}
               aria-label="ยอมรับเงื่อนไขและนโยบายความเป็นส่วนตัว"
             />
-            <p className="pt-2 text-base text-grey-600">
+            <p className="text-base text-grey-600">
               ข้าพเจ้ายอมรับ{" "}
               <span className="text-primary underline">เงื่อนไขกรมธรรม์</span> และ{" "}
               <span className="text-primary underline">ข้อกำหนดการใช้บริการ</span>{" "}
